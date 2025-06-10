@@ -1,18 +1,10 @@
 import './ProductItem.css';
 
-function ProductItem() {
-  const title = 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops';
-  const price = 250;
-  const image =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdZRDVij3RuXMIOrulPp9Z7CsEryJV8yeCIg&usqp=CAU';
-
+function ProductItem({ image, title, price }) {
   return (
     <div className="product-item">
       <div className="product-image">
-        <img
-          src={image}
-          alt="Image"
-        />
+        <img src={image} alt="Image" />
       </div>
 
       <div className="product-bottom">

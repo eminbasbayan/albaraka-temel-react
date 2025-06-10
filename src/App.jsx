@@ -1,14 +1,17 @@
-import ProductItem from "./ProductItem";
+import ProductItem from './ProductItem';
 
 function App() {
+  const title = 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops';
+  const price = 250;
+  const image =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdZRDVij3RuXMIOrulPp9Z7CsEryJV8yeCIg&usqp=CAU';
+
   return (
     <div>
-        <h1>Home Page</h1>
-        <ProductItem></ProductItem>
+      <h1>Home Page</h1>
+      <ProductItem image={image} title={title} price={price}></ProductItem>
     </div>
   );
 }
 
 export default App;
-
-// https://github.com/eminbasbayan/albaraka-temel-react
