@@ -1,9 +1,19 @@
+import "./ProductItem.css";
+
 function ProductItem() {
   return (
-    <div>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdZRDVij3RuXMIOrulPp9Z7CsEryJV8yeCIg&usqp=CAU" alt="Image" />
-      <h3>Title</h3>
-      <span>50₺</span>
+    <div className="product-item">
+      <div className="product-image">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdZRDVij3RuXMIOrulPp9Z7CsEryJV8yeCIg&usqp=CAU"
+          alt="Image"
+        />
+      </div>
+
+      <div className="product-bottom">
+        <h3>Title</h3>
+        <span>50₺</span>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.product-item{
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.product-item img {
+    width: 100%;
+}
+
+.product-bottom {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    row-gap: 5px;
+}
