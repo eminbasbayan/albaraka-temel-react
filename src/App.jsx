@@ -9,7 +9,12 @@ function App() {
   return (
     <div>
       <h1>Home Page</h1>
-      <ProductItem image={image} title={title} price={price}></ProductItem>
+      <ProductItem image={image} title={title} price={price} />
+      <ProductItem
+        image={'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'}
+        title={'Mens Cotton Jacket'}
+        price={600}
+      />
     </div>
   );
 }
