@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Products from './Products';
+import Products from './components/Products/Products';
 
 function App() {
   const [state, setState] = useState("Emre");
