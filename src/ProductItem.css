@@ -1,14 +1,23 @@
-.product-item{
-    border: 1px solid #ccc;
+.product-item {
+  border: 1px solid #ccc;
 }
 
 .product-item img {
-    width: 100%;
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+
+.product-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .product-bottom {
-    display: flex;
-    flex-direction: column;
-    padding: 6px;
-    row-gap: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  row-gap: 5px;
 }

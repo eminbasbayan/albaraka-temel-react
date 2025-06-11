@@ -8,7 +8,7 @@ function ProductItem({ image, title, price }) {
       </div>
 
       <div className="product-bottom">
-        <h3>{title}</h3>
+        <h3 className='product-title'>{title}</h3>
         <span>{price}₺</span>
       </div>
     </div>
