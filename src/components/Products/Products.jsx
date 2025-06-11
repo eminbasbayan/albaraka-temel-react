@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import Button from '../UI/Button';
 import ProductItem from './ProductItem';
 
 import { productsData } from '../../data';
 import './Products.css';
-import { useState } from 'react';
 
 // https://fakestoreapi.com/products
 
@@ -25,6 +25,13 @@ function Products() {
     }
   }
 
+  function handleDeleteItem(productId) {
+    const filteredProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(filteredProducts);
+  }
+
   return (
     <div className="products">
       <h1>Products Component</h1>
@@ -40,10 +47,12 @@ function Products() {
           return (
             <ProductItem
               key={product.id}
+              id={product.id}
               image={product.image}
               title={product.title}
               price={product.price}
               description={product.description}
+              onDeleteItem={handleDeleteItem}
             />
           );
         })}
