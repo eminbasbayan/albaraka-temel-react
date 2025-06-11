@@ -1,12 +1,42 @@
 import { Fragment, useState } from 'react';
 import './AddProduct.css';
 import Button from '../UI/Button';
+import ProductInput from './ProductInput';
+
+const productInputs = [
+  {
+    label: 'Title',
+    inputName: 'title',
+    type: 'text',
+  },
+  {
+    label: 'Image URL',
+    inputName: 'image',
+    type: 'text',
+  },
+  {
+    label: 'Description',
+    inputName: 'description',
+    type: 'text',
+  },
+  {
+    label: 'Category',
+    inputName: 'category',
+    type: 'text',
+  },
+  {
+    label: 'Price',
+    inputName: 'price',
+    type: 'number',
+  },
+];
 
 function AddProduct() {
   const [inputData, setInputData] = useState({
     title: '',
     image: '',
     description: '',
+    category: '',
     price: 0,
   });
 
@@ -20,22 +50,16 @@ function AddProduct() {
     <Fragment>
       <h2>Add New Product Form</h2>
       <form className="product-form" onSubmit={handleSubmit}>
-        <div className="form-input">
-          <label>Title: {inputData.title}</label>
-          <input type="text" onChange={handleInputChange} name="title" />
-        </div>
-        <div className="form-input">
-          <label>Image URL: {inputData.image} </label>
-          <input type="text" onChange={handleInputChange} name="image" />
-        </div>
-        <div className="form-input">
-          <label>Description: {inputData.description} </label>
-          <input type="text" onChange={handleInputChange} name="description" />
-        </div>
-        <div className="form-input">
-          <label>Price: {inputData.price} </label>
-          <input type="number" onChange={handleInputChange} name="price" />
-        </div>
+        {productInputs.map((input) => (
+          <ProductInput
+            key={input.inputName}
+            handleInputChange={handleInputChange}
+            label={input.label}
+            inputData={inputData[input.inputName]}
+            inputName={input.inputName}
+            type={input.type}
+          />
+        ))}
 
         <Button color="success">Yeni Ürün Ekle</Button>
       </form>
