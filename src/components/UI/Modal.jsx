@@ -1,7 +1,9 @@
+import { createPortal } from 'react-dom';
+
 import './Modal.css';
 
 const Modal = ({ title, description, save, setIsShowModal }) => {
-  return (
+  return createPortal(
     <div
       className="modal fade show d-block"
       id="exampleModal"
@@ -42,7 +44,8 @@ const Modal = ({ title, description, save, setIsShowModal }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById('modal')
   );
 };
 
