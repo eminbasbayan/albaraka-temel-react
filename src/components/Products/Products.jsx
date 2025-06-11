@@ -9,14 +9,19 @@ import { useState } from 'react';
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fetchProducts() {
+    setIsLoading(true);
+    setProducts([]);
     try {
       const res = await fetch('https://fakestoreapi.com/products');
       const data = await res.json();
       setProducts(data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -30,6 +35,7 @@ function Products() {
       <br />
       <br />
       <div className="products-wrapper">
+        {isLoading && <b>Loading...</b>}
         {products.map((product) => {
           return (
             <ProductItem
