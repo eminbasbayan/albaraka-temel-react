@@ -3,46 +3,38 @@ import './AddProduct.css';
 import Button from '../UI/Button';
 
 function AddProduct() {
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0);
+  const [inputData, setInputData] = useState({
+    title: '',
+    image: '',
+    description: '',
+    price: 0,
+  });
 
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
+  function handleInputChange({ target: { value, name } }) {
+    setInputData({ ...inputData, [name]: value });
   }
 
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
-
-  function handleDescriptionChange(event) {
-    setDescription(event.target.value);
-  }
-
-  function handleImageChange(event) {
-    setImage(event.target.value);
-  }
+  function handleSubmit() {}
 
   return (
     <Fragment>
       <h2>Add New Product Form</h2>
-      <form className="product-form">
+      <form className="product-form" onSubmit={handleSubmit}>
         <div className="form-input">
-          <label>Title: {title}</label>
-          <input type="text" onChange={handleTitleChange} />
+          <label>Title: {inputData.title}</label>
+          <input type="text" onChange={handleInputChange} name="title" />
         </div>
         <div className="form-input">
-          <label>Image URL: {image} </label>
-          <input type="text" onChange={handleImageChange} />
+          <label>Image URL: {inputData.image} </label>
+          <input type="text" onChange={handleInputChange} name="image" />
         </div>
         <div className="form-input">
-          <label>Description: {description} </label>
-          <input type="text" onChange={handleDescriptionChange} />
+          <label>Description: {inputData.description} </label>
+          <input type="text" onChange={handleInputChange} name="description" />
         </div>
         <div className="form-input">
-          <label>Price: {price} </label>
-          <input type="number" onChange={handlePriceChange} />
+          <label>Price: {inputData.price} </label>
+          <input type="number" onChange={handleInputChange} name="price" />
         </div>
 
         <Button color="success">Yeni Ürün Ekle</Button>
