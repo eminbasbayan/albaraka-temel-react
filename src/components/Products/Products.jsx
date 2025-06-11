@@ -5,12 +5,14 @@ import ProductItem from './ProductItem';
 import { productsData } from '../../data';
 import './Products.css';
 import AddProduct from './AddProduct';
+import Modal from '../UI/Modal';
 
 // https://fakestoreapi.com/products
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isShowModal, setIsShowModal] = useState(false)
 
   async function fetchProducts() {
     setIsLoading(true);
@@ -55,7 +57,7 @@ function Products() {
       </Button>
       <br />
       <br />
-      <AddProduct setProducts={setProducts} />
+      <AddProduct setProducts={setProducts} setIsShowModal={setIsShowModal} />
       <div className="products-wrapper">
         {isLoading && <b>Loading...</b>}
         {products.map((product) => {
@@ -73,6 +75,13 @@ function Products() {
           );
         })}
       </div>
+      {isShowModal && (
+        <Modal
+          title={'Form Inputları Boş Geçilemez!'}
+          description={'Lütfen inputları doldurunuz!'}
+          setIsShowModal={setIsShowModal}
+        />
+      )}
     </div>
   );
 }

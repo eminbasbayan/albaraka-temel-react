@@ -31,7 +31,7 @@ const productInputs = [
   },
 ];
 
-function AddProduct({ setProducts }) {
+function AddProduct({ setProducts, setIsShowModal }) {
   const [inputData, setInputData] = useState({
     title: '',
     image: '',
@@ -55,7 +55,7 @@ function AddProduct({ setProducts }) {
     );
 
     if (!isFormValid) {
-      alert('Inputlar boş geçilemez!');
+      setIsShowModal(true)
       return;
     }
 
