@@ -4,6 +4,7 @@ import ProductItem from './ProductItem';
 
 import { productsData } from '../../data';
 import './Products.css';
+import AddProduct from './AddProduct';
 
 // https://fakestoreapi.com/products
 
@@ -54,6 +55,7 @@ function Products() {
       </Button>
       <br />
       <br />
+      <AddProduct />
       <div className="products-wrapper">
         {isLoading && <b>Loading...</b>}
         {products.map((product) => {
