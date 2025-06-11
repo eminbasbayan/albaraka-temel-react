@@ -1,23 +1,33 @@
-import React from 'react';
+import { Fragment } from 'react';
+import "./AddProduct.css"
+import Button from '../UI/Button';
 
 function AddProduct() {
   return (
-    <React.Fragment>
+    <Fragment>
       <h2>Add New Product Form</h2>
-      <form action=""></form>
-    </React.Fragment>
+      <form className="product-form">
+        <div className="form-input">
+          <label>Title</label>
+          <input type="text" />
+        </div>
+        <div className="form-input">
+          <label>Image URL</label>
+          <input type="text" />
+        </div>
+        <div className="form-input">
+          <label>Description</label>
+          <input type="text" />
+        </div>
+        <div className="form-input">
+          <label>Price</label>
+          <input type="number" />
+        </div>
+
+        <Button color="success">Yeni Ürün Ekle</Button>
+      </form>
+    </Fragment>
   );
 }
-
-// empty tag
-// function AddProduct() {
-//   return (
-//     <>
-//       <h2>Add New Product Form</h2>
-//       <form action=""></form>
-//     </>
-//   );
-// }
-
 
 export default AddProduct;
