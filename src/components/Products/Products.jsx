@@ -25,6 +25,19 @@ function Products() {
     }
   }
 
+  function handleTitleChange(productId) {
+    const newProducts = products.map((item) => {
+      if (item.id === productId) {
+        const newItem = { ...item, title: 'Deneme Title' };
+
+        return newItem;
+      }
+      return item;
+    });
+
+    setProducts(newProducts);
+  }
+
   function handleDeleteItem(productId) {
     const filteredProducts = products.filter(
       (product) => product.id !== productId
@@ -53,6 +66,7 @@ function Products() {
               price={product.price}
               description={product.description}
               onDeleteItem={handleDeleteItem}
+              onTitleChange={handleTitleChange}
             />
           );
         })}

@@ -1,7 +1,7 @@
 import Button from '../UI/Button';
 import './ProductItem.css';
 
-function ProductItem({ id, image, title, price, description, onDeleteItem }) {
+function ProductItem({ id, image, title, price, description, onDeleteItem, onTitleChange }) {
   return (
     <div className="product-item">
       <div className="product-image">
@@ -13,6 +13,7 @@ function ProductItem({ id, image, title, price, description, onDeleteItem }) {
         <p className='product-description'>{description}</p>
         <span>{price}₺</span>
 
+       <Button color="secondary" onClick={()=> onTitleChange(id)}>Title Değiştir</Button>
        <Button color="primary">Sepete Ekle</Button>
        <Button color="danger" onClick={()=> onDeleteItem(id)}>Ürünü Sil</Button>
       </div>
