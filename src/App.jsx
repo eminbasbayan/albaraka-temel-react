@@ -5,14 +5,21 @@ function App() {
   return (
     <div>
       <h1>App Component</h1>
-      <Button title={'Sepete Ekle'} color="success" size="lg" />
+      <Button color="success" size="lg">
+        Sepete Ekle
+      </Button>
       <br />
       <br />
-      <Button title={'Ürünü Güncelle'} color="primary"/>
+      <Button color="primary">Ürünü Güncelle</Button>
       <br />
       <br />
-      <Button title={'Ürünü Sil'} color="danger" size="sm" />
-      <Button />
+      <Button color="danger" size="sm">
+        Ürünü Sil
+      </Button>
+
+      <Button color="success">
+        <b>Kaydet</b>
+      </Button>
       {/* <Products /> */}
     </div>
   );
