@@ -31,7 +31,7 @@ const productInputs = [
   },
 ];
 
-function AddProduct() {
+function AddProduct({ setProducts }) {
   const [inputData, setInputData] = useState({
     title: '',
     image: '',
@@ -44,7 +44,11 @@ function AddProduct() {
     setInputData({ ...inputData, [name]: value });
   }
 
-  function handleSubmit() {}
+  function handleSubmit(event) {
+    event.preventDefault();
+    const productData = { ...inputData, id: Math.random() };
+    setProducts((prevState) => [productData, ...prevState]);
+  }
 
   return (
     <Fragment>

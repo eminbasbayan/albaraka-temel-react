@@ -55,7 +55,7 @@ function Products() {
       </Button>
       <br />
       <br />
-      <AddProduct />
+      <AddProduct setProducts={setProducts} />
       <div className="products-wrapper">
         {isLoading && <b>Loading...</b>}
         {products.map((product) => {
