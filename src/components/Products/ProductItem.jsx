@@ -1,3 +1,4 @@
+import Button from '../UI/Button';
 import './ProductItem.css';
 
 function ProductItem({ image, title, price, description }) {
@@ -12,7 +13,7 @@ function ProductItem({ image, title, price, description }) {
         <p className='product-description'>{description}</p>
         <span>{price}₺</span>
 
-        <button>Sepete Ekle</button>
+       <Button color="primary">Sepete Ekle</Button>
       </div>
     </div>
   );

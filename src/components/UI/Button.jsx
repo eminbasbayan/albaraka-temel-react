@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import './Button.css';
 
 function Button(props) {
-  console.log(props);
-  
   return (
-    <button className={`btn btn-${props.color} btn-${props.size}`}>
+    <button className={`btn btn-${props.color} btn-${props.size}`} onClick={props.onClick}>
       {props.children}
     </button>
   );
