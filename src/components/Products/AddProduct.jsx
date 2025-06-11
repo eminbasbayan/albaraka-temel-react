@@ -37,7 +37,7 @@ function AddProduct({ setProducts }) {
     image: '',
     description: '',
     category: '',
-    price: 0,
+    price: '',
   });
 
   function handleInputChange({ target: { value, name } }) {
@@ -46,7 +46,24 @@ function AddProduct({ setProducts }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const productData = { ...inputData, id: Math.random() };
+
+    console.log(Object.keys(inputData));
+    console.log(Object.values(inputData));
+
+    const isFormValid = Object.values(inputData).every(
+      (value) => value.trim() !== ''
+    );
+
+    if (!isFormValid) {
+      alert('Inputlar boş geçilemez!');
+      return;
+    }
+
+    const productData = {
+      ...inputData,
+      id: Math.random(),
+      price: Number(inputData.price),
+    };
     setProducts((prevState) => [productData, ...prevState]);
   }
 
