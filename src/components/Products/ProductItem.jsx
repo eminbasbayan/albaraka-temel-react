@@ -14,14 +14,7 @@ function ProductItem({
   setCartItems,
 }) {
   const product = { id, image, title, price, description };
-  const {fullName} = useContext(CartContext);
-
-  console.log(fullName);
-  
-
-  function addToCart() {
-    setCartItems((prevCartItems) => [product, ...prevCartItems]);
-  }
+  const { addToCart } = useContext(CartContext);
 
   return (
     <div className="product-item">
@@ -30,14 +23,14 @@ function ProductItem({
       </div>
 
       <div className="product-bottom">
-        <h3 className="product-title">{fullName}</h3>
+        <h3 className="product-title">{title}</h3>
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
 
         <Button color="secondary" onClick={() => onTitleChange(id)}>
           Title Değiştir
         </Button>
-        <Button color="primary" onClick={addToCart}>
+        <Button color="primary" onClick={() => addToCart(product)}>
           Sepete Ekle
         </Button>
         <Button color="danger" onClick={() => onDeleteItem(id)}>

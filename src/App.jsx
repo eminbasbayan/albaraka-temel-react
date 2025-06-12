@@ -1,15 +1,12 @@
-import { useState } from 'react';
 import Header from './components/Layout/Header';
 import Products from './components/Products/Products';
-import Button from './components/UI/Button';
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
   return (
-    <div>
-      <Header cartItems={cartItems} />
+    <div className='app'>
+      <Header />
       <h1>App Component</h1>
-      <Products setCartItems={setCartItems} />
+      <Products />
     </div>
   );
 }

@@ -9,7 +9,7 @@ import Modal from '../UI/Modal';
 
 // https://fakestoreapi.com/products
 
-function Products({setCartItems}) {
+function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
@@ -85,7 +85,6 @@ function Products({setCartItems}) {
               description={product.description}
               onDeleteItem={handleDeleteItem}
               onTitleChange={handleTitleChange}
-              setCartItems={setCartItems}
             />
           );
         })}

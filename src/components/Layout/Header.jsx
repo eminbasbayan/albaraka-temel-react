@@ -1,12 +1,16 @@
+import { useContext } from 'react';
+import './Header.css';
+import { CartContext } from '../../context/CartContext';
 
-import "./Header.css"
-
-const Header = ({cartItems}) => {
+const Header = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-4 header">
       <div className="container-fluid">
-        <a className="navbar-brand fw-bold" href="/">MyApp</a>
-        
+        <a className="navbar-brand fw-bold" href="/">
+          MyApp
+        </a>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -22,13 +26,19 @@ const Header = ({cartItems}) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
             <li className="nav-item">
-              <a className="nav-link active" href="/">Ana Sayfa</a>
+              <a className="nav-link active" href="/">
+                Ana Sayfa
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/hakkinda">Hakkında</a>
+              <a className="nav-link" href="/hakkinda">
+                Hakkında
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/iletisim">İletişim</a>
+              <a className="nav-link" href="/iletisim">
+                İletişim
+              </a>
             </li>
             <li className="nav-item ms-lg-3">
               <button className="btn btn-outline-primary position-relative">
