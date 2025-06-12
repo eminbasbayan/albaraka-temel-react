@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import Button from '../UI/Button';
 import './ProductItem.css';
+import { CartContext } from '../../context/CartContext';
 
 function ProductItem({
   id,
@@ -12,6 +14,10 @@ function ProductItem({
   setCartItems,
 }) {
   const product = { id, image, title, price, description };
+  const {fullName} = useContext(CartContext);
+
+  console.log(fullName);
+  
 
   function addToCart() {
     setCartItems((prevCartItems) => [product, ...prevCartItems]);
@@ -24,7 +30,7 @@ function ProductItem({
       </div>
 
       <div className="product-bottom">
-        <h3 className="product-title">{title}</h3>
+        <h3 className="product-title">{fullName}</h3>
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
 
