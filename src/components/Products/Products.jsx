@@ -6,6 +6,7 @@ import { productsData } from '../../data';
 import './Products.css';
 import AddProduct from './AddProduct';
 import Modal from '../UI/Modal';
+import { toast } from 'react-toastify';
 
 // https://fakestoreapi.com/products
 
@@ -60,6 +61,9 @@ function Products() {
       (product) => product.id !== productId
     );
     setProducts(filteredProducts);
+    toast.success('Ürün başarıyla silindi!', {
+      position: 'bottom-center',
+    });
   }
 
   return (

@@ -11,7 +11,6 @@ function ProductItem({
   description,
   onDeleteItem,
   onTitleChange,
-  setCartItems,
 }) {
   const product = { id, image, title, price, description };
   const { addToCart } = useContext(CartContext);

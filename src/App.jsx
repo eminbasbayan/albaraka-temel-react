@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import Header from './components/Layout/Header';
 import Products from './components/Products/Products';
 import { ThemeContext } from './context/ThemeProvider';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <h1>App Component</h1>
       <Products />
+      <ToastContainer />
     </div>
   );
 }
