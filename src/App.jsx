@@ -6,6 +6,7 @@ import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
@@ -22,6 +23,10 @@ function App() {
     {
       path: '/cart',
       element: <CartPage />,
+    },
+       {
+      path: '/products/:productId',
+      element: <ProductDetailsPage />,
     },
   ]);
 

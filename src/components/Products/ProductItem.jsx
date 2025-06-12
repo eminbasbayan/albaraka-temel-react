@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import Button from '../UI/Button';
 import './ProductItem.css';
 import { CartContext } from '../../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 function ProductItem({ id, image, title, price, description, onDeleteItem }) {
   const product = { id, image, title, price, description };
   const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   return (
     <div className="product-item">
@@ -14,7 +16,12 @@ function ProductItem({ id, image, title, price, description, onDeleteItem }) {
       </div>
 
       <div className="product-bottom">
-        <h3 className="product-title">{title}</h3>
+        <h3
+          className="product-title"
+          onClick={() => navigate(`/products/${id}`)}
+        >
+          {title}
+        </h3>
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
 
