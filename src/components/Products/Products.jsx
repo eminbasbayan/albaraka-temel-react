@@ -31,9 +31,9 @@ function Products() {
   // fetchProducts();
 
   // component DOM'a ilk yüklendiğinde çalışacak.
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   // component DOM'a ilk yüklendiğinde ve dep. array'e göre çalışacak.
   // useEffect(() => {
