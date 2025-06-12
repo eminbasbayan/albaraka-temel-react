@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../UI/Button';
 import ProductItem from './ProductItem';
 
@@ -12,7 +12,7 @@ import Modal from '../UI/Modal';
 function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isShowModal, setIsShowModal] = useState(false)
+  const [isShowModal, setIsShowModal] = useState(false);
 
   async function fetchProducts() {
     setIsLoading(true);
@@ -27,6 +27,20 @@ function Products() {
       setIsLoading(false);
     }
   }
+
+  // fetchProducts();
+
+  // component DOM'a ilk yüklendiğinde çalışacak.
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
+
+  // component DOM'a ilk yüklendiğinde ve dep. array'e göre çalışacak.
+  useEffect(() => {
+    if (isShowModal === true) {
+      fetchProducts();
+    }
+  }, [isShowModal]);
 
   function handleTitleChange(productId) {
     const newProducts = products.map((item) => {
