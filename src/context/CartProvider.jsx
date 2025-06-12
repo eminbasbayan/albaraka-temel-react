@@ -9,7 +9,26 @@ const CartProvider = ({ children }) => {
   console.log(cartItems);
 
   function addToCart(product) {
-    setCartItems((prevCartItems) => [product, ...prevCartItems]);
+    const findCartItem = cartItems.find((item) => item.id === product.id);
+
+    if (findCartItem) {
+      const newCartItems = cartItems.map((item) => {
+        if (item.id === findCartItem.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      setCartItems(newCartItems);
+    } else {
+      setCartItems((prevCartItems) => [
+        { ...product, quantity: 1 },
+        ...prevCartItems,
+      ]);
+    }
+
     toast.success('Ürün sepete eklendi', {
       position: 'top-center',
     });

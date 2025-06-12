@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import Button from '../UI/Button';
-import ProductItem from './ProductItem';
-
-import { productsData } from '../../data';
-import './Products.css';
-import AddProduct from './AddProduct';
-import Modal from '../UI/Modal';
 import { toast } from 'react-toastify';
 
-// https://fakestoreapi.com/products
+import AddProduct from './AddProduct';
+import Button from '../UI/Button';
+import Modal from '../UI/Modal';
+import ProductItem from './ProductItem';
+
+import './Products.css';
 
 function Products() {
   const [products, setProducts] = useState([]);
