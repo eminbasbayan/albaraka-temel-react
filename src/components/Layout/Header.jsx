@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import './Header.css';
 import { CartContext } from '../../context/CartContext';
+import { ThemeContext } from '../../context/ThemeProvider';
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
+  const { handleThemeMode, themeMode } = useContext(ThemeContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-4 header">
       <div className="container-fluid">
@@ -39,6 +41,20 @@ const Header = () => {
               <a className="nav-link" href="/iletisim">
                 İletişim
               </a>
+            </li>
+
+            <li className="nav-item ms-lg-3">
+              <button onClick={handleThemeMode} className="btn btn-secondary">
+                {themeMode === 'dark' ? (
+                  <>
+                    <i className="bi bi-sun"></i> Light Mode
+                  </>
+                ) : (
+                  <>
+                    <i className="bi bi-moon"></i> Dark Mode
+                  </>
+                )}
+              </button>
             </li>
             <li className="nav-item ms-lg-3">
               <button className="btn btn-outline-primary position-relative">
