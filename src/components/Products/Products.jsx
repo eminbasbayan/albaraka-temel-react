@@ -36,11 +36,11 @@ function Products() {
   // }, []);
 
   // component DOM'a ilk yüklendiğinde ve dep. array'e göre çalışacak.
-  useEffect(() => {
-    if (isShowModal === true) {
-      fetchProducts();
-    }
-  }, [isShowModal]);
+  // useEffect(() => {
+  //   if (isShowModal === true) {
+  //     fetchProducts();
+  //   }
+  // }, [isShowModal]);
 
   function handleTitleChange(productId) {
     const newProducts = products.map((item) => {

@@ -47,9 +47,6 @@ function AddProduct({ setProducts, setIsShowModal }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(Object.keys(inputData));
-    console.log(Object.values(inputData));
-
     const isFormValid = Object.values(inputData).every(
       (value) => value.trim() !== ''
     );

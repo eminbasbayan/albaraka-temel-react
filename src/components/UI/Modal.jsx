@@ -1,16 +1,30 @@
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import './Modal.css';
 
 const Modal = ({ title, description, save, setIsShowModal }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("component DOM'a ilk yüklendiğinde çalışır!");
+    let i = 0;
+
+   const id = setInterval(() => {
+      i += 1;
+      setCount(i);
+      console.log(i);
+    }, 1000);
+
+    // clean-up function
+    return () => {
+      console.log("component DOM'dan kaldırıldığında çalışır!");
+      clearInterval(id)
+    };
+  }, []);
+
   return createPortal(
-    <div
-      className="modal fade show d-block"
-      id="exampleModal"
-      tabIndex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <div className="modal fade show d-block">
       <div
         className="modal-overlay"
         onClick={() => setIsShowModal(false)}
@@ -19,7 +33,7 @@ const Modal = ({ title, description, save, setIsShowModal }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {title}
+              {title} {count}
             </h1>
             <button
               type="button"
