@@ -7,11 +7,9 @@ import ThemeProvider from './context/ThemeProvider';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <ThemeProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </ThemeProvider>
-  </BrowserRouter>
+  <ThemeProvider>
+    <CartProvider>
+      <App />
+    </CartProvider>
+  </ThemeProvider>
 );

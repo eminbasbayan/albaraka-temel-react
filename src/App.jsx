@@ -2,13 +2,28 @@ import { useContext } from 'react';
 import Header from './components/Layout/Header';
 import { ThemeContext } from './context/ThemeProvider';
 import { ToastContainer } from 'react-toastify';
-import { Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <HomePage />,
+    },
+    {
+      path: '/products',
+      element: <ProductsPage />,
+    },
+    {
+      path: '/cart',
+      element: <CartPage />,
+    },
+  ]);
 
   return (
     <div
@@ -20,11 +35,7 @@ function App() {
     >
       <Header />
       <h1>App Component</h1>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path='/products' element={<ProductsPage />} />
-        <Route path='/cart' element={<CartPage />} />
-      </Routes>
+      <RouterProvider router={router} />
       <ToastContainer />
     </div>
   );
