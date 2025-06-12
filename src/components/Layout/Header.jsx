@@ -1,7 +1,7 @@
 
 import "./Header.css"
 
-const Header = () => {
+const Header = ({cartItems}) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-4 header">
       <div className="container-fluid">
@@ -34,7 +34,7 @@ const Header = () => {
               <button className="btn btn-outline-primary position-relative">
                 <i className="bi bi-cart3"></i> Sepet
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  2
+                  {cartItems.length}
                   <span className="visually-hidden">sepet öğeleri</span>
                 </span>
               </button>

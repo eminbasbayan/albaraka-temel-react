@@ -1,7 +1,22 @@
 import Button from '../UI/Button';
 import './ProductItem.css';
 
-function ProductItem({ id, image, title, price, description, onDeleteItem, onTitleChange }) {
+function ProductItem({
+  id,
+  image,
+  title,
+  price,
+  description,
+  onDeleteItem,
+  onTitleChange,
+  setCartItems,
+}) {
+  const product = { id, image, title, price, description };
+
+  function addToCart() {
+    setCartItems((prevCartItems) => [product, ...prevCartItems]);
+  }
+
   return (
     <div className="product-item">
       <div className="product-image">
@@ -9,13 +24,19 @@ function ProductItem({ id, image, title, price, description, onDeleteItem, onTit
       </div>
 
       <div className="product-bottom">
-        <h3 className='product-title'>{title}</h3>
-        <p className='product-description'>{description}</p>
+        <h3 className="product-title">{title}</h3>
+        <p className="product-description">{description}</p>
         <span>{price}₺</span>
 
-       <Button color="secondary" onClick={()=> onTitleChange(id)}>Title Değiştir</Button>
-       <Button color="primary">Sepete Ekle</Button>
-       <Button color="danger" onClick={()=> onDeleteItem(id)}>Ürünü Sil</Button>
+        <Button color="secondary" onClick={() => onTitleChange(id)}>
+          Title Değiştir
+        </Button>
+        <Button color="primary" onClick={addToCart}>
+          Sepete Ekle
+        </Button>
+        <Button color="danger" onClick={() => onDeleteItem(id)}>
+          Ürünü Sil
+        </Button>
       </div>
     </div>
   );
