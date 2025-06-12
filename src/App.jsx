@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import Header from './components/Layout/Header';
-import Products from './components/Products/Products';
 import { ThemeContext } from './context/ThemeProvider';
 import { ToastContainer } from 'react-toastify';
-import LoginForm from './components/Auth/LoginForm';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
@@ -18,7 +20,11 @@ function App() {
     >
       <Header />
       <h1>App Component</h1>
-      <LoginForm />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path='/products' element={<ProductsPage />} />
+        <Route path='/cart' element={<CartPage />} />
+      </Routes>
       <ToastContainer />
     </div>
   );
