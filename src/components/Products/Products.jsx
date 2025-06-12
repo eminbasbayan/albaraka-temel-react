@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { act, useEffect, useReducer, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import AddProduct from './AddProduct';
@@ -8,22 +8,46 @@ import ProductItem from './ProductItem';
 
 import './Products.css';
 
+function reducerFunction(state, action) {
+  switch (action.type) {
+    case 'SET_PRODUCTS':
+      return { ...state, products: action.data, isLoading: false };
+    case 'ADD_NEW_PRODUCT':
+      return { ...state, products: [action.product, ...state.products] };
+    case 'DELETE_PRODUCT':
+
+      const filteredProducts = state.products.filter(
+        (item) => item.id !== action.productId
+      );
+
+      return { ...state, products: filteredProducts };
+    case 'SHOW_MODAL':
+      return { ...state, isShowModal: true };
+
+    case 'CLOSE_MODAL':
+      return { ...state, isShowModal: false };
+
+    default:
+      return state;
+  }
+}
+
+const initialState = {
+  products: [],
+  isLoading: true,
+  isShowModal: false,
+};
+
 function Products() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [state, dispatch] = useReducer(reducerFunction, initialState);
 
   async function fetchProducts() {
-    setIsLoading(true);
-    setProducts([]);
     try {
       const res = await fetch('https://fakestoreapi.com/products');
       const data = await res.json();
-      setProducts(data);
+      dispatch({ type: 'SET_PRODUCTS', data });
     } catch (err) {
       console.log(err);
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -41,27 +65,17 @@ function Products() {
   //   }
   // }, [isShowModal]);
 
-  function handleTitleChange(productId) {
-    const newProducts = products.map((item) => {
-      if (item.id === productId) {
-        const newItem = { ...item, title: 'Deneme Title' };
-
-        return newItem;
-      }
-      return item;
-    });
-
-    setProducts(newProducts);
-  }
 
   function handleDeleteItem(productId) {
-    const filteredProducts = products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(filteredProducts);
+   dispatch({type: "DELETE_PRODUCT", productId})
+    // setProducts(filteredProducts);
     toast.success('Ürün başarıyla silindi!', {
       position: 'bottom-center',
     });
+  }
+
+  function addNewProduct(product) {
+    dispatch({ type: 'ADD_NEW_PRODUCT', product });
   }
 
   return (
@@ -73,10 +87,13 @@ function Products() {
       </Button>
       <br />
       <br />
-      <AddProduct setProducts={setProducts} setIsShowModal={setIsShowModal} />
+      <AddProduct
+        addNewProduct={addNewProduct}
+        setIsShowModal={() => dispatch({ type: 'SHOW_MODAL' })}
+      />
       <div className="products-wrapper">
-        {isLoading && <b>Loading...</b>}
-        {products.map((product) => {
+        {state.isLoading && <b>Loading...</b>}
+        {state.products.map((product) => {
           return (
             <ProductItem
               key={product.id}
@@ -86,16 +103,15 @@ function Products() {
               price={product.price}
               description={product.description}
               onDeleteItem={handleDeleteItem}
-              onTitleChange={handleTitleChange}
             />
           );
         })}
       </div>
-      {isShowModal && (
+      {state.isShowModal && (
         <Modal
           title={'Form Inputları Boş Geçilemez!'}
           description={'Lütfen inputları doldurunuz!'}
-          setIsShowModal={setIsShowModal}
+          setIsShowModal={() => dispatch({ type: 'CLOSE_MODAL' })}
         />
       )}
     </div>

@@ -3,15 +3,7 @@ import Button from '../UI/Button';
 import './ProductItem.css';
 import { CartContext } from '../../context/CartContext';
 
-function ProductItem({
-  id,
-  image,
-  title,
-  price,
-  description,
-  onDeleteItem,
-  onTitleChange,
-}) {
+function ProductItem({ id, image, title, price, description, onDeleteItem }) {
   const product = { id, image, title, price, description };
   const { addToCart } = useContext(CartContext);
 
@@ -26,9 +18,6 @@ function ProductItem({
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
 
-        <Button color="secondary" onClick={() => onTitleChange(id)}>
-          Title Değiştir
-        </Button>
         <Button color="primary" onClick={() => addToCart(product)}>
           Sepete Ekle
         </Button>

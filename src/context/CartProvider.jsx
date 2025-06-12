@@ -6,8 +6,6 @@ const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const fullName = 'Emin Başbayan';
 
-  console.log(cartItems);
-
   function addToCart(product) {
     const findCartItem = cartItems.find((item) => item.id === product.id);
 

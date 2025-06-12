@@ -31,7 +31,7 @@ const productInputs = [
   },
 ];
 
-function AddProduct({ setProducts, setIsShowModal }) {
+function AddProduct({ addNewProduct, setIsShowModal }) {
   const [inputData, setInputData] = useState({
     title: '',
     image: '',
@@ -52,7 +52,7 @@ function AddProduct({ setProducts, setIsShowModal }) {
     );
 
     if (!isFormValid) {
-      setIsShowModal(true)
+      setIsShowModal(true);
       return;
     }
 
@@ -61,7 +61,7 @@ function AddProduct({ setProducts, setIsShowModal }) {
       id: Math.random(),
       price: Number(inputData.price),
     };
-    setProducts((prevState) => [productData, ...prevState]);
+    addNewProduct(productData);
   }
 
   return (
