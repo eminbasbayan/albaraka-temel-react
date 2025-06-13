@@ -20,8 +20,6 @@ import router from './routes/router';
 function App() {
   const { themeMode } = useContext(ThemeContext);
 
-
-
   return (
     <div
       className="app"
