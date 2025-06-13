@@ -4,7 +4,17 @@ import './ProductItem.css';
 import { CartContext } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
-function ProductItem({ id, image, title, price, description, onDeleteItem }) {
+function ProductItem({
+  id,
+  image,
+  title,
+  price,
+  description,
+  onDeleteItem,
+  quantity,
+  removeFromCart,
+  cart,
+}) {
   const product = { id, image, title, price, description };
   const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
@@ -23,14 +33,22 @@ function ProductItem({ id, image, title, price, description, onDeleteItem }) {
           {title}
         </h3>
         <p className="product-description">{description}</p>
-        <span>{price}₺</span>
+        <span>{price}₺ {quantity && `x ${quantity}`} </span>
 
-        <Button color="primary" onClick={() => addToCart(product)}>
-          Sepete Ekle
-        </Button>
-        <Button color="danger" onClick={() => onDeleteItem(id)}>
-          Ürünü Sil
-        </Button>
+        {cart ? (
+          <Button color="danger" onClick={() => removeFromCart(product.id)}>
+            Sepetten Sil
+          </Button>
+        ) : (
+          <>
+            <Button color="primary" onClick={() => addToCart(product)}>
+              Sepete Ekle
+            </Button>
+            <Button color="danger" onClick={() => onDeleteItem(id)}>
+              Ürünü Sil
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

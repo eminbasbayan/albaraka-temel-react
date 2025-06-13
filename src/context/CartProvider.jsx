@@ -32,6 +32,14 @@ const CartProvider = ({ children }) => {
     });
   }
 
+  function removeFromCart(cartItemId) {
+    const filteredCartItems = cartItems.filter(
+      (cItem) => cItem.id !== cartItemId
+    );
+
+    setCartItems(filteredCartItems);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -39,6 +47,7 @@ const CartProvider = ({ children }) => {
         addToCart,
         cartItems,
         setCartItems,
+        removeFromCart
       }}
     >
       {children}
