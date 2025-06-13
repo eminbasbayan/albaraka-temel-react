@@ -15,71 +15,12 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminUsersPage from './pages/admin/AdminUsersPage';
 import AdminOrdersPage from './pages/admin/AdminOrdersPage';
 import AdminSettingsPage from './pages/admin/AdminSettingsPage';
+import router from './routes/router';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <MainLayout />,
-      children: [
-        {
-          path: '/',
-          element: <HomePage />,
-        },
-        {
-          path: 'products',
-          element: <ProductsPage />,
-        },
-        {
-          path: 'cart',
-          element: <CartPage />,
-        },
-        {
-          path: 'products/:productId',
-          element: <ProductDetailsPage />,
-        },
-      ],
-    },
-    {
-      path: '/auth',
-      element: <AuthLayout />,
-      children: [
-        {
-          path: 'login',
-          element: <LoginPage />,
-        },
-        {
-          path: 'register',
-          element: <RegisterPage />,
-        },
-      ],
-    },
-    {
-      path: '/admin',
-      element: <AdminLayout />,
-      children: [
-        {
-          path: 'dashboard',
-          element: <AdminDashboardPage />,
-          index: true,
-        },
-        {
-          path: "users",
-          element: <AdminUsersPage />
-        },
-           {
-          path: "orders",
-          element: <AdminOrdersPage />
-        },
-              {
-          path: "settings",
-          element: <AdminSettingsPage />
-        },
-      ],
-    },
-  ]);
+
 
   return (
     <div
