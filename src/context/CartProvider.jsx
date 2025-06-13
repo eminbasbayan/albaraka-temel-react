@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CartContext } from './CartContext';
 import { toast } from 'react-toastify';
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem('sepet')) || []
+  );
   const fullName = 'Emin Başbayan';
 
   function addToCart(product) {
@@ -32,6 +34,10 @@ const CartProvider = ({ children }) => {
     });
   }
 
+  useEffect(() => {
+    localStorage.setItem('sepet', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   function removeFromCart(cartItemId) {
     const filteredCartItems = cartItems.filter(
       (cItem) => cItem.id !== cartItemId
@@ -47,7 +53,7 @@ const CartProvider = ({ children }) => {
         addToCart,
         cartItems,
         setCartItems,
-        removeFromCart
+        removeFromCart,
       }}
     >
       {children}
