@@ -1,20 +1,8 @@
 import { useContext } from 'react';
 import { ThemeContext } from './context/ThemeProvider';
 import { ToastContainer } from 'react-toastify';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ProductsPage from './pages/ProductsPage';
-import CartPage from './pages/CartPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';
-import MainLayout from './layouts/MainLayout';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import AuthLayout from './layouts/AuthLayout';
-import AdminLayout from './layouts/AdminLayout';
-import AdminDashboardPage from './pages/admin/AdminDashboardPage';
-import AdminUsersPage from './pages/admin/AdminUsersPage';
-import AdminOrdersPage from './pages/admin/AdminOrdersPage';
-import AdminSettingsPage from './pages/admin/AdminSettingsPage';
+import { RouterProvider } from 'react-router-dom';
+
 import router from './routes/router';
 
 function App() {
