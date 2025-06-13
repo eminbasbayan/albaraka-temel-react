@@ -10,6 +10,11 @@ import MainLayout from './layouts/MainLayout';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AuthLayout from './layouts/AuthLayout';
+import AdminLayout from './layouts/AdminLayout';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import AdminUsersPage from './pages/admin/AdminUsersPage';
+import AdminOrdersPage from './pages/admin/AdminOrdersPage';
+import AdminSettingsPage from './pages/admin/AdminSettingsPage';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
@@ -48,6 +53,29 @@ function App() {
         {
           path: 'register',
           element: <RegisterPage />,
+        },
+      ],
+    },
+    {
+      path: '/admin',
+      element: <AdminLayout />,
+      children: [
+        {
+          path: 'dashboard',
+          element: <AdminDashboardPage />,
+          index: true,
+        },
+        {
+          path: "users",
+          element: <AdminUsersPage />
+        },
+           {
+          path: "orders",
+          element: <AdminOrdersPage />
+        },
+              {
+          path: "settings",
+          element: <AdminSettingsPage />
         },
       ],
     },
