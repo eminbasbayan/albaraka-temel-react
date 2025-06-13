@@ -1,5 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
-
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const AdminLayout = () => {
   return (
@@ -10,22 +9,50 @@ const AdminLayout = () => {
           <h4 className="text-white mb-4">Admin Panel</h4>
           <ul className="nav flex-column">
             <li className="nav-item">
-              <Link className="nav-link active text-white" to="dashboard">Dashboard</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link text-secondary ${isActive && 'active text-white'}`
+                }
+                to="dashboard"
+              >
+                Dashboard
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-secondary" to="users">Users</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link text-secondary ${isActive && 'active text-white'}`
+                }
+                to="users"
+              >
+                Users
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-secondary" to="orders">Orders</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link text-secondary ${isActive && 'active text-white'}`
+                }
+                to="orders"
+              >
+                Orders
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-secondary" to="settings">Settings</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link text-secondary ${isActive && 'active text-white'}`
+                }
+                to="settings"
+              >
+                Settings
+              </NavLink>
             </li>
           </ul>
         </nav>
 
         {/* Main Content */}
-       <Outlet />
+        <Outlet />
       </div>
     </div>
   );
