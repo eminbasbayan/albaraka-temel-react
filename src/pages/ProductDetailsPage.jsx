@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../components/Layout/Header';
 
 const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
@@ -15,6 +16,7 @@ const ProductDetailsPage = () => {
 
   return (
     <div className="container py-5">
+      <Header />
       <div className="row g-4">
         {/* Ürün görseli */}
         <div className="col-md-6 text-center">

@@ -38,7 +38,7 @@ function App() {
         color: `${themeMode === 'dark' ? 'white' : 'dark'}`,
       }}
     >
-      <Header />
+      
       <h1>App Component</h1>
       <RouterProvider router={router} />
       <ToastContainer />

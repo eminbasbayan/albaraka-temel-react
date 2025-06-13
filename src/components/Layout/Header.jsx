@@ -1,9 +1,11 @@
 import { useContext } from 'react';
-import './Header.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import { ThemeContext } from '../../context/ThemeProvider';
+import './Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
   const { cartItems } = useContext(CartContext);
   const { handleThemeMode, themeMode } = useContext(ThemeContext);
   return (
@@ -28,18 +30,13 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
             <li className="nav-item">
-              <a className="nav-link active" href="/">
+              <Link className="nav-link active" to="/">
                 Ana Sayfa
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/hakkinda">
-                Hakkında
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/iletisim">
-                İletişim
+              <a className="nav-link" href="/products">
+                Ürünler
               </a>
             </li>
 
@@ -57,7 +54,10 @@ const Header = () => {
               </button>
             </li>
             <li className="nav-item ms-lg-3">
-              <button className="btn btn-outline-primary position-relative">
+              <button
+                className="btn btn-outline-primary position-relative"
+                onClick={() => navigate('/cart')}
+              >
                 <i className="bi bi-cart3"></i> Sepet
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {cartItems.length}
