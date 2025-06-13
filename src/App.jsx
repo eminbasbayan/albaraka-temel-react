@@ -1,12 +1,15 @@
 import { useContext } from 'react';
-import Header from './components/Layout/Header';
 import { ThemeContext } from './context/ThemeProvider';
 import { ToastContainer } from 'react-toastify';
-import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
+import MainLayout from './layouts/MainLayout';
 
 function App() {
   const { themeMode } = useContext(ThemeContext);
@@ -14,19 +17,25 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <HomePage />,
-    },
-    {
-      path: '/products',
-      element: <ProductsPage />,
-    },
-    {
-      path: '/cart',
-      element: <CartPage />,
-    },
-       {
-      path: '/products/:productId',
-      element: <ProductDetailsPage />,
+      element: <MainLayout />,
+      children: [
+        {
+          path: '/',
+          element: <HomePage />,
+        },
+        {
+          path: 'products',
+          element: <ProductsPage />,
+        },
+        {
+          path: 'cart',
+          element: <CartPage />,
+        },
+        {
+          path: 'products/:productId',
+          element: <ProductDetailsPage />,
+        },
+      ],
     },
   ]);
 
@@ -36,9 +45,9 @@ function App() {
       style={{
         backgroundColor: `${themeMode === 'dark' ? 'black' : 'white'}`,
         color: `${themeMode === 'dark' ? 'white' : 'dark'}`,
+        paddingTop: '58px',
       }}
     >
-      
       <h1>App Component</h1>
       <RouterProvider router={router} />
       <ToastContainer />

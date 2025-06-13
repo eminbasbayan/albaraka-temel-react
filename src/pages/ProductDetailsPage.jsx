@@ -16,7 +16,6 @@ const ProductDetailsPage = () => {
 
   return (
     <div className="container py-5">
-      <Header />
       <div className="row g-4">
         {/* Ürün görseli */}
         <div className="col-md-6 text-center">

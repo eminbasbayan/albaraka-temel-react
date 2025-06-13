@@ -8,7 +8,6 @@ const HomePage = () => {
   const backwardCount = useCounter(false);
   return (
     <div className='home-page'>
-      <Header />
         <h1>Home Page</h1>
         <br />
         <p className="display-3">Yeni Count Hook: {forwardCount}</p>
